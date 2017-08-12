@@ -37,6 +37,10 @@ class SettingViewController: UIViewController {
     }
     */
     
+    @IBOutlet weak var colorSchemeSwitch: UISwitch!
+    @IBOutlet weak var colorSchemeLabel: UILabel!
+    
+    // change the settings of the min/max percents
     func changeSettings(){
         let defaults = UserDefaults.standard
         
@@ -51,32 +55,63 @@ class SettingViewController: UIViewController {
         defaults.synchronize()
     }
     
+    // change the color theme swich
+    func changeSwitch(){
+        let defaults = UserDefaults.standard
+        let isDarkColorSchemeOn = colorSchemeSwitch.isOn
+        
+        defaults.set(isDarkColorSchemeOn, forKey: "tip_calculator_color_scheme")
+        defaults.synchronize()
+        
+        if (isDarkColorSchemeOn){
+            colorSchemeLabel.text = "Dark Color Scheme ON"
+            colorSchemeLabel.isEnabled = true
+        }
+        else{
+            colorSchemeLabel.text = "Dark Color Scheme OFF"
+            colorSchemeLabel.isEnabled = false
+        }
+    }
+    
+    // change the color theme
+    @IBAction func changeColorScheme(_ sender: Any) {
+        changeSwitch()
+    }
+    
+    // clear the max percent field
     @IBAction func clearMaxField(_ sender: Any) {
         maxPercentageLabel.text = ""
     }
-
-    @IBAction func claerMinField(_ sender: Any) {
+    // clear the min percent field
+    @IBAction func clearMinField(_ sender: Any) {
         minPercentageLabel.text = ""
     }
     
-    @IBAction func settingsChanged(_ sender: Any) {
+    @IBAction func settingsChanged(_ sender: Any){
         changeSettings()
     }
     
+
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         let defaults = UserDefaults.standard
-
+        // put the color theme switch in the correct position
+        if ( defaults.object(forKey: "tip_calculator_min_value") != nil){
+            colorSchemeSwitch.isOn = defaults.bool(forKey: "tip_calculator_color_scheme")
+            changeSwitch()
+        }
+        // put hte min and max values of percents in the fields
         if (defaults.object(forKey: "tip_calculator_min_value") == nil ||
             defaults.object(forKey: "tip_calculator_max_value") == nil){
+            // default values
             minPercentageLabel.text = "10"
             maxPercentageLabel.text = "25"
             changeSettings()
         }
         else{
+            // values saved in settings
             let minPercentageValue = defaults.integer(forKey: "tip_calculator_min_value")
             let maxPercentageValue = defaults.integer(forKey: "tip_calculator_max_value")
-
             minPercentageLabel.text = String(format: "%d", minPercentageValue)
             maxPercentageLabel.text = String(format: "%d", maxPercentageValue)
         }

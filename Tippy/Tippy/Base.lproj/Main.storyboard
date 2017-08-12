@@ -46,7 +46,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="$0.00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="BqV-ic-42G">
-                                        <rect key="frame" x="255" y="0.0" width="84" height="37"/>
+                                        <rect key="frame" x="146" y="0.0" width="193" height="37"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
@@ -88,14 +88,14 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="25%" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="Ayc-Aa-xty">
-                                        <rect key="frame" x="237" y="3" width="98" height="37"/>
+                                        <rect key="frame" x="190" y="3" width="145" height="37"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <color key="highlightedColor" cocoaTouchSystemColor="darkTextColor"/>
                                     </label>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="$0.00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="nY8-Uf-3c6">
-                                        <rect key="frame" x="251" y="32" width="84" height="37"/>
+                                        <rect key="frame" x="167" y="32" width="168" height="37"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
@@ -118,8 +118,8 @@
                                 </subviews>
                                 <color key="backgroundColor" red="0.72601109350151005" green="0.82502025687253233" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
-                            <view contentMode="scaleToFill" misplaced="YES" id="TJC-84-iEB">
-                                <rect key="frame" x="16" y="254" width="343" height="11"/>
+                            <view contentMode="scaleToFill" misplaced="YES" id="yzn-7L-82e">
+                                <rect key="frame" x="16" y="251" width="343" height="10"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
@@ -139,12 +139,16 @@
                     </navigationItem>
                     <connections>
                         <outlet property="billField" destination="Pzy-b0-F9T" id="tiw-YJ-j8r"/>
+                        <outlet property="billView" destination="FNa-d2-8hb" id="9iL-V9-Zfv"/>
+                        <outlet property="mainView" destination="8bC-Xf-vdC" id="egZ-vY-kjL"/>
                         <outlet property="maxPercentageLabel" destination="6rT-ti-zO7" id="W5b-Hv-1iR"/>
                         <outlet property="minPercentageLabel" destination="EXc-2W-tLu" id="2VJ-fl-Wqs"/>
                         <outlet property="tipLabel" destination="nY8-Uf-3c6" id="4fi-YJ-Zgh"/>
                         <outlet property="tipPercentageLabel" destination="Ayc-Aa-xty" id="edN-wg-eFK"/>
                         <outlet property="tipSlider" destination="P1c-vp-Hvb" id="OcN-kI-hKj"/>
+                        <outlet property="tipView" destination="ssb-by-hYd" id="Jgk-xD-2y4"/>
                         <outlet property="totalLabel" destination="BqV-ic-42G" id="gPd-3X-6WD"/>
+                        <outlet property="totalView" destination="m5u-py-x3c" id="frn-dO-oHI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -185,7 +189,7 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" keyboardType="decimalPad"/>
                                 <connections>
-                                    <action selector="claerMinField:" destination="PVt-EL-Dcb" eventType="editingDidBegin" id="Wg5-Dk-0hd"/>
+                                    <action selector="clearMinField:" destination="PVt-EL-Dcb" eventType="editingDidBegin" id="F3t-1Z-LSF"/>
                                     <action selector="settingsChanged:" destination="PVt-EL-Dcb" eventType="editingChanged" id="38k-74-Kh9"/>
                                 </connections>
                             </textField>
@@ -214,11 +218,32 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Dark Color Scheme OFF" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" enabled="NO" adjustsFontSizeToFit="NO" id="h7L-EC-gHc">
+                                <rect key="frame" x="16" y="228" width="203" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" id="shu-ap-Tlw">
+                                <rect key="frame" x="310" y="218" width="51" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="changeColorScheme:" destination="PVt-EL-Dcb" eventType="valueChanged" id="B1y-gm-W1e"/>
+                                </connections>
+                            </switch>
+                            <view contentMode="scaleToFill" misplaced="YES" id="TJC-84-iEB">
+                                <rect key="frame" x="16" y="188" width="343" height="10"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" red="0.93239696029999997" green="0.93094660340000002" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <navigationItem key="navigationItem" id="QP1-wt-0Sv"/>
                     <connections>
+                        <outlet property="colorSchemeLabel" destination="h7L-EC-gHc" id="Ocp-sr-um2"/>
+                        <outlet property="colorSchemeSwitch" destination="shu-ap-Tlw" id="HsU-0i-Nrx"/>
                         <outlet property="maxPercentageLabel" destination="10I-ea-01v" id="g79-Ob-uI5"/>
                         <outlet property="minPercentageLabel" destination="B9a-Dj-43M" id="4ic-dW-nJR"/>
                     </connections>
